@@ -7,7 +7,7 @@ $(document).ready( function(){
     var nextBtn = $(".next");
     var prevBtn = $(".prev");
 
-
+    // NAVIGAZIONE CON MOUSE
     // next
     nextBtn.click( function(){
         nextPrevSlide("next");
@@ -18,6 +18,21 @@ $(document).ready( function(){
         nextPrevSlide("prev");
     });
 
+    //NAVIGAZIONE CON KEYBOARD
+    //  $(document) --> voglio che l'azione sia appena si carica il doc 
+    // .keydown --> metodo/ascoltatore di evento (quando si preme su tastiera)
+    //  e/event param che passiamo all funz di callback e che contiene info sull'evento keydown
+    $(document).keydown( function(event){                  
+    console.log(event); 
+    console.log(event.keyCode);    
+        
+        if (event.keyCode == 39){        // freccia tastiera destra 
+            nextPrevSlide("next");
+        } else if (event.keyCode == 37){ // freccia tastiera sinistra 
+            nextPrevSlide("prev");
+        }
+
+    });
 
 
     // End doc 
@@ -25,13 +40,13 @@ $(document).ready( function(){
 
 
 
+
+
+
+
 /*****************************
  * FUNCTIONS 
  ****************************/
-
-
-
-
 
  /**
   * Naviga tra le slide
@@ -39,25 +54,30 @@ $(document).ready( function(){
   */
 
   function nextPrevSlide(direction){
-     console.log(direction);
-    // referenza active (dove si trova l'active iniziale)
+     
+    // REFERENZE active (dove si trova l'active iniziale)
     var activeImage = $(".images img.active");
     var activeCircle = $ (".nav i.active");
+    // referenze primo e ultimo elemento
+    var firstImage = $(".images img.first");
+    var firstCircle = $(".nav i.first");
+    var lastImage = $(".images img.last");
+    var lastCircle = $(".nav i.last");
 
-    // reset ( quando sposto la selezione voglio che sia active solo quella img/circle e non la precedente )
+
+    // RESET  ( quando sposto la selezione voglio che active sia solo quella img/circle e non anche la precedente )
     activeImage.removeClass("active");
     activeCircle.removeClass("active");
 
 
-
-    //next
+    //NEXT
     if (direction === "next"){
 
         // quando l'img active arriva  all'ultima    (hasClass === true)
         if (activeImage.hasClass("last")){
              // sposto active alla prima img e sul primo circle (i)
-            $(".images img.first").addClass("active");
-            $(".nav i.first").addClass("active");
+            firstImage.addClass("active");
+            firstCircle.addClass("active");
         } else {
              //sposto la selezione di Jquery da activeImage per andare al prox elem e gli agg la classe active
              activeImage.next("img").addClass("active");
@@ -65,13 +85,13 @@ $(document).ready( function(){
         } 
   
     } 
-    // prev
+    // PREV
     else if(direction === "prev"){
         // se l'active raggiunge la prima
         if (activeImage.hasClass("first")){
             //sposto l'active sull'ultima img e sull'ultimo circle
-            $(".images img.last").addClass("active");
-            $(".nav i.last").addClass("active");
+            lastImage.addClass("active");
+            lastCircle.addClass("active");
         } else {
              //sposto la selezione di Jquery da activeImage per andare all'elemento precendente e aggiungo classe active
              activeImage.prev("img").addClass("active");
