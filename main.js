@@ -33,12 +33,37 @@ $(document).ready( function(){
         }
 
     });
+    
+    
+    // CLICK CIRCLE
+
+    // ref
+    var circle = $(".nav i");
+    var image = $(".images img");
+
+    circle.click( function(){
+
+        // indice circle
+        var index = circle.index(this);
+        // console.log(circleIndex);
+
+        // RESET
+        image.removeClass("active");
+        circle.removeClass("active");
+
+        // seguono insieme lo stesso indice e agg classe active
+        $(image[index]).addClass("active");
+        $(circle[index]).addClass("active");
+
+
+
+    });
+    
+
 
 
     // End doc 
 });
-
-
 
 
 
@@ -102,4 +127,14 @@ $(document).ready( function(){
   
 
 }
+
+
+
+ 
+    
+
+
+   
+    
+    
 
