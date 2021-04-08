@@ -48,8 +48,7 @@ $(document).ready( function(){
         // console.log(index);
 
         // RESET
-        image.removeClass("active");
-        circle.removeClass("active");
+        $(".active").removeClass("active");
 
         // seguono insieme lo stesso indice e agg classe active
         $(image[index]).addClass("active");
@@ -104,9 +103,9 @@ $(document).ready( function(){
             firstImage.addClass("active");
             firstCircle.addClass("active");
         } else {
-             //sposto la selezione di Jquery da activeImage per andare al prox elem e gli agg la classe active
-             activeImage.next("img").addClass("active");
-             activeCircle.next(".nav i").addClass("active");
+            //sposto la selezione di Jquery da activeImage per andare al prox elem e gli agg la classe active
+            activeImage.next("img").addClass("active");
+            activeCircle.next(".nav i").addClass("active");
         } 
   
     } 
@@ -118,9 +117,9 @@ $(document).ready( function(){
             lastImage.addClass("active");
             lastCircle.addClass("active");
         } else {
-             //sposto la selezione di Jquery da activeImage per andare all'elemento precendente e aggiungo classe active
-             activeImage.prev("img").addClass("active");
-             activeCircle.prev(".nav i").addClass("active");
+            //sposto la selezione di Jquery da activeImage per andare all'elemento precendente e aggiungo classe active
+            activeImage.prev("img").addClass("active");
+            activeCircle.prev(".nav i").addClass("active");
         }
 
     }
