@@ -45,7 +45,7 @@ $(document).ready( function(){
 
         // indice circle
         var index = circle.index(this);
-        // console.log(circleIndex);
+        // console.log(Index);
 
         // RESET
         image.removeClass("active");
